@@ -1,4 +1,4 @@
-   const colors = ["#FF6B81", "#6AC9FF", "#FFD200" ]; // Valid CSS color values
+     const colors = ["#FF6B81", "#6AC9FF", "#FFD200" ]; // Valid CSS color values
     // URL to your JSON data
     const jsonURL = 'https://meeeeeeeep1.github.io/haveniscool/crosswords/crosswords.json'; // Replace with your JSON URL
 
@@ -12,11 +12,11 @@
         // Iterate through the JSON data and create grid items
         let colorIndex = 0
 
-        for (const key in data1) {
-          if (data1.hasOwnProperty(key)) {
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
 
             const name = key;
-            const imageLink = data1[key];
+            const imageLink = data[key];
 
             // Create grid item
             const gridItem = document.createElement("div");
