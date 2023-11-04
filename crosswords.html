@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* You can adjust the number of columns as needed */
+      gap: 10px;
+    }
+    .grid-item {
+      text-align: center;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-container" id="grid-container">
+  </div>
+
+  <script>
+    // URL to your JSON data
+    const jsonURL = 'https://meeeeeeeep1.github.io/haveniscool/crosswords/crosswords.json'; // Replace with your JSON URL
+
+    const gridContainer = document.getElementById("grid-container");
+
+    // Fetch the JSON data
+    fetch(jsonURL)
+      .then(response => response.json())
+      .then(data => {
+        // Iterate through the JSON data and create grid items
+        for (const key in data) {
+          if (data.hasOwnProperty(key)) {
+            const name = key;
+            const imageLink = data[key];
+
+            // Create grid item
+            const gridItem = document.createElement("div");
+            gridItem.classList.add("grid-item");
+
+            // Create an image element
+            const image = document.createElement("img");
+            image.src = imageLink;
+
+            // Create a paragraph element for the name
+            const nameElement = document.createElement("p");
+            nameElement.textContent = name;
+
+            // Append the image and name to the grid item
+            gridItem.appendChild(image);
+            gridItem.appendChild(nameElement);
+
+            // Append the grid item to the grid container
+            gridContainer.appendChild(gridItem);
+          }
+        }
+      })
+      .catch(error => console.error("Error fetching JSON:", error));
+  </script>
+</body>
+</html>
